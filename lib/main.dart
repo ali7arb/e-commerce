@@ -1,5 +1,6 @@
-import 'package:ecomer/modules/homescreen/home_scrren.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'layout/shop_app/shop_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +15,30 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          fontFamily: 'MuliBold',
-          primarySwatch: Colors.deepOrange,
-          appBarTheme: const AppBarTheme(
-            color: Colors.white,
-            elevation: 0,
-          )),
-      home: const HomeScreen(),
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'MuliBold',
+        primarySwatch: Colors.deepOrange,
+        appBarTheme: const AppBarTheme(
+          color: Colors.white,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarIconBrightness: Brightness.dark,
+            statusBarColor: Colors.white,
+            statusBarBrightness: Brightness.dark,
+          ),
+          elevation: 0,
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.deepOrange,
+          unselectedItemColor: Colors.grey,
+          elevation: 20,
+          backgroundColor: Colors.white,
+        ),
+      ),
+      home: const ShopLayout(),
     );
   }
 }

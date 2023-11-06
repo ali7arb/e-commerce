@@ -82,34 +82,29 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             const SizedBox(
               height: 40,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  height: 50,
-                  textColor: Colors.white,
-                  elevation: 0,
-                  minWidth: 300,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  color: Colors.deepOrange,
-                  onPressed: () {
-                    navigateTo(
-                      context,
-                      const LoginScreen(),
-                    );
-                  },
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(
-                      fontFamily: 'Muli',
-                      fontSize: 20,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+            MaterialButton(
+              height: 50,
+              textColor: Colors.white,
+              elevation: 0,
+              minWidth: 300,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              color: Colors.deepOrange,
+              onPressed: () {
+                navigateTo(
+                  context,
+                  const LoginScreen(),
+                );
+              },
+              child: const Text(
+                'Continue',
+                style: TextStyle(
+                  fontFamily: 'Muli',
+                  fontSize: 20,
                 ),
-              ],
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),
