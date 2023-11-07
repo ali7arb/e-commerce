@@ -32,14 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
             )),
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 70,
-              ),
               const Text(
                 'Welcome Back',
                 textAlign: TextAlign.center,

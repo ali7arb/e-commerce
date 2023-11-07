@@ -1,6 +1,6 @@
+import 'package:ecomer/layout/shop_app/shop_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'layout/shop_app/shop_layout.dart';
 
 void main() {
   runApp(const MyApp());

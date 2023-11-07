@@ -99,10 +99,11 @@ class ShopLayout extends StatelessWidget {
                   label: 'Chat',
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.person_2_outlined,
-                    ),
-                    label: 'Profile'),
+                  icon: Icon(
+                    Icons.person_2_outlined,
+                  ),
+                  label: 'Profile',
+                ),
               ],
             ),
           );
