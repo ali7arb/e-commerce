@@ -90,8 +90,9 @@ class ShopLayout extends StatelessWidget {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.favorite_border_outlined),
-                    label: 'Favorite'),
+                  icon: Icon(Icons.favorite_border_outlined),
+                  label: 'Favorite',
+                ),
                 BottomNavigationBarItem(
                   icon: Icon(
                     Icons.message,

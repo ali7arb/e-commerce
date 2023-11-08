@@ -39,7 +39,7 @@ class LoginSuccess extends StatelessWidget {
           ),
           MaterialButton(
             onPressed: () {
-              navigateTo(context, const HomeScreen());
+              navigateTo(context, HomeScreen());
             },
             minWidth: 200,
             height: 50,

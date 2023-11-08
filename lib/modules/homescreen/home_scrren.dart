@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../../model/shopmodel/product_model.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,135 +54,17 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.orangeAccent[100],
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.flash_on_rounded,
-                          color: Colors.orangeAccent,
-                        ),
-                      ),
-                    ),
+              SizedBox(
+                height: MediaQuery.of(context).size.width / 4.2,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      buildIconItem(IconItem[index]),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 25,
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.orangeAccent[100],
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.format_align_center,
-                          color: Colors.orangeAccent,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.orangeAccent[100],
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.games_outlined,
-                          color: Colors.orangeAccent,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.orangeAccent[100],
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.card_giftcard,
-                          color: Colors.orangeAccent,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.orangeAccent[100],
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.more_horiz,
-                          color: Colors.orangeAccent,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    'Flash\nDeal',
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                  Text(
-                    'Bill',
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                  Text(
-                    'Game',
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                  Text(
-                    'Daily\nGift',
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                  Text(
-                    'More',
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                ],
+                  itemCount: 5,
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -203,92 +92,16 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        height: 100,
-                        width: 250,
-                        decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            fit: BoxFit.fitWidth,
-                            image: AssetImage(
-                              'assets/images/Image Banner 2.png',
-                            ),
-                          ),
-                          color: Colors.grey[500],
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Smartphone',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                '18 Brands',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Muli',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        height: 100,
-                        width: 250,
-                        decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            fit: BoxFit.fitWidth,
-                            image: AssetImage(
-                              'assets/images/Image Banner 3.png',
-                            ),
-                          ),
-                          color: Colors.grey[500],
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Fashion',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                '24 Brands',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Muli',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+              SizedBox(
+                height: MediaQuery.of(context).size.width / 3.1,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      buildSpecialPro(specialItem[index]),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 20,
+                  ),
+                  itemCount: specialItem.length,
                 ),
               ),
               const SizedBox(
@@ -317,170 +130,157 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        InkWell(
-                          child: Container(
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              image: const DecorationImage(
-                                fit: BoxFit.fitWidth,
-                                image: AssetImage(
-                                  'assets/images/Image Popular Product 1.png',
-                                ),
-                              ),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                          onTap: () {},
-                        ),
-                        const Text('Wireless Controller\nfor PS4'),
-                        Row(
-                          children: [
-                            const Text(
-                              '\$64.99',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.deepOrange,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 40,
-                            ),
-                            CircleAvatar(
-                              maxRadius: 15,
-                              backgroundColor: Colors.grey[300],
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.favorite,
-                                  size: 15,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      children: [
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              image: const DecorationImage(
-                                fit: BoxFit.fitWidth,
-                                image: AssetImage(
-                                  'assets/images/Image Popular Product 2.png',
-                                ),
-                              ),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
-                        const Text('Nike Sport White\nMan Pant'),
-                        Row(
-                          children: [
-                            const Text(
-                              '\$55.5',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.deepOrange,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 40,
-                            ),
-                            CircleAvatar(
-                              maxRadius: 15,
-                              backgroundColor: Colors.grey[300],
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.favorite,
-                                  size: 15,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      children: [
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              image: const DecorationImage(
-                                fit: BoxFit.fitWidth,
-                                image: AssetImage(
-                                  'assets/images/Image Popular Product 3.png',
-                                ),
-                              ),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
-                        const Text('Hat'),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          children: [
-                            const Text(
-                              '\$64.99',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.deepOrange,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            CircleAvatar(
-                              maxRadius: 15,
-                              backgroundColor: Colors.grey[300],
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.favorite,
-                                  size: 15,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+              SizedBox(
+                height: MediaQuery.of(context).size.width / 1.2,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      buildItemProduct(productItem[index]),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 10,
+                  ),
+                  itemCount: productItem.length,
                 ),
               )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildItemProduct(ProductModel model) {
+    return Row(
+      children: [
+        Column(
+          children: [
+            InkWell(
+              child: Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: DecorationImage(
+                    fit: BoxFit.fitWidth,
+                    image: AssetImage(
+                      model.image,
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              onTap: () {},
+            ),
+            Text(
+              model.title,
+            ),
+            Row(
+              children: [
+                Text(
+                  model.price,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.deepOrange,
+                  ),
+                ),
+                const SizedBox(
+                  width: 45,
+                ),
+                CircleAvatar(
+                  maxRadius: 15,
+                  backgroundColor: Colors.grey[300],
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.favorite,
+                      size: 15,
+                      color: Colors.grey,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget buildIconItem(IconModel icons) {
+    return Row(
+      children: [
+        Column(
+          children: [
+            InkWell(
+              onTap: () {},
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.orangeAccent.withOpacity(0.4),
+                ),
+                child: Icon(
+                  icons.icon,
+                  color: Colors.deepOrange.withOpacity(0.3),
+                ),
+              ),
+            ),
+            Text(
+              icons.title,
+              style: TextStyle(
+                color: Colors.grey[500],
+              ),
+            )
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget buildSpecialPro(SpecialProductModel special) {
+    return Row(
+      children: [
+        InkWell(
+          child: Container(
+            height: 100,
+            width: 250,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fitWidth,
+                image: AssetImage(
+                  special.image,
+                ),
+              ),
+              color: Colors.grey[500],
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    special.text1,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    special.text2,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Muli',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          onTap: () {},
+        ),
+      ],
     );
   }
 }

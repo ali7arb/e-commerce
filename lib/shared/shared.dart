@@ -19,4 +19,15 @@ Widget myDivider() => Padding(
     );
 
 // ignore: non_constant_identifier_names
-Widget ItemIcon() => const Icon(Icons.reorder);
+
+// List<BoardingModel> boarding = [
+//   BoardingModel(
+//     image: 'assets/images/splash_1.png',
+//   ),
+//   BoardingModel(
+//     image: 'assets/images/splash_2.png',
+//   ),
+//   BoardingModel(
+//     image: 'assets/images/splash_3.png',
+//   ),
+// ];
