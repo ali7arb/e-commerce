@@ -11,8 +11,10 @@ class ShopCubit extends Cubit<ShopStates> {
   static ShopCubit get(context) => BlocProvider.of(context);
 
   int currentIndex = 0;
+  Map<int, bool> favorites = {};
+
   List<Widget> bottomScreens = [
-    HomeScreen(),
+    const HomeScreen(),
     const FavoriteScreen(),
     const ChatScreen(),
     const ProfileScreen(),
@@ -21,5 +23,11 @@ class ShopCubit extends Cubit<ShopStates> {
   void changeBottom(int index) {
     currentIndex = index;
     emit(ShopChangeBottomNavState());
+  }
+
+  void changeFavorites(int productId) {
+    favorites[productId] = !favorites[productId]!;
+
+    emit(ShopChangeFavoritesState());
   }
 }

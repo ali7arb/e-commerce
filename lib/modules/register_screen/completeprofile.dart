@@ -1,12 +1,20 @@
+import 'package:ecomer/modules/login_screen/loginscreen.dart';
 import 'package:ecomer/modules/register_screen/registerscreen.dart';
 import 'package:ecomer/shared/shared.dart';
 import 'package:flutter/material.dart';
 
-import 'otpvreification.dart';
-
-class CompleteProfileScreen extends StatelessWidget {
+class CompleteProfileScreen extends StatefulWidget {
   const CompleteProfileScreen({super.key});
 
+  @override
+  State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();
+}
+
+class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+  var fNameController = TextEditingController();
+  var lNameController = TextEditingController();
+  var phoneNumber = TextEditingController();
+  var addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,90 +53,76 @@ class CompleteProfileScreen extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                label: const Text('First Name'),
-                hintText: 'Enter your first name',
-                suffixIcon: const Icon(
-                  Icons.person,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                label: const Text('Last Name'),
-                hintText: 'Enter your Last name',
-                suffixIcon: const Icon(
-                  Icons.person,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                label: const Text('Phone Number'),
-                hintText: 'Enter your phone number',
-                suffixIcon: const Icon(
-                  Icons.phone_android_outlined,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                label: const Text('Address'),
-                hintText: 'Enter your address',
-                suffixIcon: const Icon(
-                  Icons.location_on_outlined,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            MaterialButton(
-              height: 50,
-              textColor: Colors.white,
-              elevation: 0,
-              minWidth: 350,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
-              ),
-              color: Colors.deepOrange,
-              onPressed: () {
-                navigateTo(context, const OtpVerification());
+            defaultForm(
+              controller: fNameController,
+              type: TextInputType.text,
+              label: 'First Name',
+              hintText: 'Enter your First Name',
+              suffix: Icons.person_outline_outlined,
+              validate: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter your email address';
+                }
+                return null;
               },
-              child: const Text(
-                'Continue',
-                style: TextStyle(
-                  fontFamily: 'Muli',
-                  fontSize: 20,
-                ),
-                textAlign: TextAlign.center,
-              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            defaultForm(
+              controller: lNameController,
+              type: TextInputType.text,
+              label: 'Last Name',
+              hintText: 'Enter your Last Name',
+              suffix: Icons.person_outline_outlined,
+              validate: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter your email address';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            defaultForm(
+              controller: phoneNumber,
+              type: TextInputType.phone,
+              label: 'Phone Number',
+              hintText: 'Enter your Phone Number',
+              suffix: Icons.phone_android_outlined,
+              validate: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter your Phone number';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            defaultForm(
+              controller: addressController,
+              type: TextInputType.text,
+              label: 'Address',
+              hintText: 'Enter your Address',
+              suffix: Icons.location_on_outlined,
+              validate: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter your email address';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            defaultButton(
+              text: 'continue',
+              function: () {
+                navigateTo(context, const LoginScreen());
+              },
+              radius: 30,
             ),
             const Spacer(),
             Text(

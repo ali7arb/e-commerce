@@ -11,16 +11,44 @@ class FavoriteScreen extends StatelessWidget {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return buildFavItem(context);
+        return Scaffold(
+          appBar: AppBar(
+            title: Row(
+              children: [
+                const Text(
+                  'My Favorites',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                const Spacer(),
+                Text(
+                  '1 Item',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontFamily: 'Muli',
+                    color: Colors.deepOrange.withOpacity(0.7),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          body: buildFavItem(context),
+        );
       },
     );
   }
 }
 
-Widget buildFavItem(context) => Padding(
+Widget buildFavItem(
+  context,
+) =>
+    Padding(
       padding: const EdgeInsets.all(20.0),
       child: SizedBox(
-        height: MediaQuery.of(context).size.width / 4,
+        height: MediaQuery.of(context).size.width / 3,
         child: Row(
           children: [
             const Image(
@@ -41,7 +69,7 @@ Widget buildFavItem(context) => Padding(
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 14,
-                      height: 1.3,
+                      height: 3,
                     ),
                   ),
                   const Spacer(),
@@ -58,22 +86,15 @@ Widget buildFavItem(context) => Padding(
                       IconButton(
                         onPressed: () {
                           // ShopCubit.get(context)
-
-                          //     .changeFavorites(model.product.id);
+                          //     .changeFavorites(model.productModel.id);
                         },
                         icon: const CircleAvatar(
                           radius: 15,
-
                           // backgroundColor: (ShopCubit.get(context)
-
-                          //     .favorites[model.product.id] ??
-
-                          //     true)
-
-                          //     ? defaultColor
-
-                          //      :Colors.grey,
-
+                          //             .favorites[model.productModel.id] ??
+                          //         true
+                          //     ? Colors.deepOrange
+                          //     : Colors.grey[500]),
                           child: Icon(
                             Icons.favorite_border,
                             size: 14,

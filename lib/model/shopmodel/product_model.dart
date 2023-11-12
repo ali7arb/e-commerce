@@ -88,3 +88,26 @@ List<SpecialProductModel> specialItem = [
     text2: '24 Brands',
   ),
 ];
+
+class PhotoDetails {
+  String image = '';
+
+  PhotoDetails({
+    required this.image,
+  });
+}
+
+List<PhotoDetails> DetailsIthem = [
+  PhotoDetails(
+    image: 'assets/images/ps4_console_white_1.png',
+  ),
+  PhotoDetails(
+    image: 'assets/images/ps4_console_white_2.png',
+  ),
+  PhotoDetails(
+    image: 'assets/images/ps4_console_white_3.png',
+  ),
+  PhotoDetails(
+    image: 'assets/images/ps4_console_white_4.png',
+  ),
+];

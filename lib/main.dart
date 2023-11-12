@@ -1,6 +1,6 @@
-import 'package:ecomer/layout/shop_app/shop_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'modules/login_screen/loginscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
         ),
       ),
-      home: const ShopLayout(),
+      home: const LoginScreen(),
     );
   }
 }

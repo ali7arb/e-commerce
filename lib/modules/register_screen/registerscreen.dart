@@ -2,11 +2,19 @@ import 'package:ecomer/modules/login_screen/loginscreen.dart';
 import 'package:ecomer/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'completeprofile.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  var emailController = TextEditingController();
+
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,74 +57,60 @@ class RegisterScreen extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  label: const Text('Email'),
-                  hintText: 'Enter your email',
-                  suffixIcon: const Icon(
-                    Icons.email_outlined,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
+              defaultForm(
+                controller: emailController,
+                type: TextInputType.emailAddress,
+                label: 'Email',
+                hintText: 'Enter your email',
+                suffix: Icons.email_outlined,
+                validate: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter your email address';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 30,
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  label: const Text('Password'),
-                  hintText: 'Enter your password',
-                  suffixIcon: const Icon(
-                    Icons.lock_outline,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
+              defaultForm(
+                controller: passwordController,
+                type: TextInputType.text,
+                label: 'Password',
+                hintText: 'Enter your password',
+                suffix: Icons.lock_outlined,
+                validate: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter your email address';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 30,
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  label: const Text('Confirm Password'),
-                  hintText: 'Re-enter your password',
-                  suffixIcon: const Icon(
-                    Icons.lock_outline,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
+              defaultForm(
+                controller: passwordController,
+                type: TextInputType.text,
+                label: 'Re-Password',
+                hintText: 'Enter your password',
+                suffix: Icons.lock_outlined,
+                validate: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter your email address';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 40,
               ),
-              MaterialButton(
-                height: 50,
-                textColor: Colors.white,
-                elevation: 0,
-                minWidth: 350,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                color: Colors.deepOrange,
-                onPressed: () {
+              defaultButton(
+                text: 'continue',
+                function: () {
                   navigateTo(context, const CompleteProfileScreen());
                 },
-                child: const Text(
-                  'Continue',
-                  style: TextStyle(
-                    fontFamily: 'Muli',
-                    fontSize: 20,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                radius: 30,
               ),
               const SizedBox(
                 height: 80,

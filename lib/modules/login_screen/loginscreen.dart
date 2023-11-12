@@ -1,10 +1,10 @@
+import 'package:ecomer/layout/shop_app/shop_layout.dart';
 import 'package:ecomer/modules/forgotpassword_screen/forgotpasswordscreen.dart';
 import 'package:ecomer/modules/onboardingscreen/onboarding_screen.dart';
 import 'package:ecomer/modules/register_screen/registerscreen.dart';
 import 'package:ecomer/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'login_success.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,6 +15,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool value = false;
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,34 +57,34 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 50,
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  label: const Text('Email'),
-                  hintText: 'Enter your email',
-                  suffixIcon: const Icon(
-                    Icons.email_outlined,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
+              defaultForm(
+                controller: emailController,
+                type: TextInputType.emailAddress,
+                label: 'Email',
+                hintText: 'Enter your email',
+                suffix: Icons.email_outlined,
+                validate: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter your email address';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 30,
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  label: const Text('Password'),
-                  hintText: 'Enter your password',
-                  suffixIcon: const Icon(
-                    Icons.lock_outline,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
+              defaultForm(
+                controller: passwordController,
+                type: TextInputType.visiblePassword,
+                hintText: 'Enter your password',
+                suffix: Icons.lock_outline,
+                label: 'Password',
+                validate: (value) {
+                  if (value.isEmpty) {
+                    return 'please enter your password';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 30,
@@ -123,26 +125,12 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 30,
               ),
-              MaterialButton(
-                height: 50,
-                textColor: Colors.white,
-                elevation: 0,
-                minWidth: 350,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                color: Colors.deepOrange,
-                onPressed: () {
-                  navigateTo(context, const LoginSuccess());
+              defaultButton(
+                text: 'continue',
+                function: () {
+                  navigateTo(context, const ShopLayout());
                 },
-                child: const Text(
-                  'Continue',
-                  style: TextStyle(
-                    fontFamily: 'Muli',
-                    fontSize: 20,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                radius: 30,
               ),
               const SizedBox(
                 height: 50,

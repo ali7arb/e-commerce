@@ -52,55 +52,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            Text(
-              'Hello, Ali',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.deepOrange.withOpacity(0.9),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Text(
+                'Hello, Ali',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.deepOrange.withOpacity(0.9),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            CircleAvatar(
-              maxRadius: 46,
-              backgroundColor: Colors.deepOrange.withOpacity(0.9),
-              child: CircleAvatar(
-                maxRadius: 43,
-                backgroundColor: Colors.white,
+              const SizedBox(
+                height: 20,
+              ),
+              CircleAvatar(
+                maxRadius: 46,
+                backgroundColor: Colors.deepOrange.withOpacity(0.9),
                 child: CircleAvatar(
-                  maxRadius: 40,
-                  backgroundColor: Colors.grey[300],
-                  child: const Text(
-                    'A H',
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.black,
+                  maxRadius: 43,
+                  backgroundColor: Colors.white,
+                  child: CircleAvatar(
+                    maxRadius: 40,
+                    backgroundColor: Colors.grey[300],
+                    child: const Text(
+                      'A H',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: ListView.separated(
-                itemBuilder: (context, index) => buildItem(
-                  titleItem[index],
-                ),
-                separatorBuilder: (context, index) => myDivider(),
-                itemCount: titleItem.length,
+              const SizedBox(
+                height: 30,
               ),
-            ),
-          ],
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: ListView.separated(
+                  itemBuilder: (context, index) => buildItem(
+                    titleItem[index],
+                  ),
+                  separatorBuilder: (context, index) => myDivider(),
+                  itemCount: titleItem.length,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
