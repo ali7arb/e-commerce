@@ -1,3 +1,4 @@
+import 'package:ecomer/controller/favorite_controller.dart';
 import 'package:ecomer/model/shopmodel/shop_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -270,11 +271,18 @@ class HomeScreen extends StatelessWidget {
                     maxRadius: 15,
                     backgroundColor: Colors.grey[300],
                     child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite,
+                      onPressed: () {
+                        model.toggleFavorite();
+                        Get.find<FavoriteController>().addToFavorites(model);
+                        Get.find<FavoriteController>()
+                            .removeFromFavorites(model);
+                      },
+                      icon: Icon(
+                        model.isFavorite!
+                            ? Icons.favorite
+                            : Icons.favorite_border,
                         size: 15,
-                        color: Colors.grey,
+                        color: model.isFavorite! ? Colors.red : Colors.grey,
                       ),
                     ),
                   )

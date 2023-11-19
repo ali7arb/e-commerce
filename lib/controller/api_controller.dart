@@ -2,17 +2,17 @@ import 'package:get/get.dart';
 
 import '../model/shopmodel/shop_model.dart';
 import '../shared/network/dio_helper.dart';
-// Import your DioHelper
 
 class ProductController extends GetxController {
-  var products = <ShopModel>[].obs; // RxList to store ShopModel instances
+  var products = <ShopModel>[].obs;
 
   DioHelper dioHelper = DioHelper();
+  late ShopModel shopModel;
 
   @override
   void onInit() {
     super.onInit();
-    fetchProducts(); // Fetch products when the controller initializes
+    fetchProducts();
   }
 
   void fetchProducts() async {
@@ -20,8 +20,10 @@ class ProductController extends GetxController {
       List<ShopModel> fetchedProducts = await dioHelper.getProducts();
       products.assignAll(fetchedProducts);
     } catch (e) {
+      // ignore: avoid_print
       print('Exception: $e');
     }
+    // ignore: avoid_print
     print(fetchProducts);
   }
 }

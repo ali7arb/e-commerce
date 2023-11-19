@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../controller/favorite_controller.dart';
+import '../../model/shopmodel/shop_model.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({super.key});
+  final FavoriteController favoriteController = Get.find<FavoriteController>();
+
+  FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,7 @@ class FavoriteScreen extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              '1 Item',
+              '${favoriteController.favorites.length}',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15,
@@ -29,22 +35,38 @@ class FavoriteScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: buildFavItem(context),
+      body: Obx(
+        () {
+          if (favoriteController.favorites.isEmpty) {
+            return const Center(
+              child: Text('No favorite item yet.'),
+            );
+          } else {
+            return ListView.separated(
+              itemBuilder: (context, index) {
+                ShopModel product = favoriteController.favorites[index];
+                return buildFavItem(context, product);
+              },
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 10,
+              ),
+              itemCount: favoriteController.favorites.length,
+            );
+          }
+        },
+      ),
     );
   }
 }
 
-Widget buildFavItem(
-  context,
-) =>
-    Padding(
+Widget buildFavItem(context, ShopModel model) => Padding(
       padding: const EdgeInsets.all(20.0),
       child: SizedBox(
-        height: MediaQuery.of(context).size.width / 3,
+        height: MediaQuery.of(context).size.width / 2,
         child: Row(
           children: [
-            const Image(
-              image: AssetImage('assets/images/Image Popular Product 1.png'),
+            Image(
+              image: NetworkImage('${model.image}'),
               width: 120,
               height: 120,
             ),
@@ -55,11 +77,11 @@ Widget buildFavItem(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Text',
+                  Text(
+                    '${model.title}',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       height: 3,
                     ),
@@ -67,26 +89,18 @@ Widget buildFavItem(
                   const Spacer(),
                   Row(
                     children: [
-                      const Text(
-                        'Price',
-                        style: TextStyle(
+                      Text(
+                        '${model.price}',
+                        style: const TextStyle(
                           fontSize: 12,
                           color: Colors.red,
                         ),
                       ),
                       const Spacer(),
                       IconButton(
-                        onPressed: () {
-                          // ShopCubit.get(context)
-                          //     .changeFavorites(model.productModel.id);
-                        },
+                        onPressed: () {},
                         icon: const CircleAvatar(
                           radius: 15,
-                          // backgroundColor: (ShopCubit.get(context)
-                          //             .favorites[model.productModel.id] ??
-                          //         true
-                          //     ? Colors.deepOrange
-                          //     : Colors.grey[500]),
                           child: Icon(
                             Icons.favorite_border,
                             size: 14,
