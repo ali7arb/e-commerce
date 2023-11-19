@@ -1,14 +1,14 @@
+import 'package:ecomer/model/shopmodel/shop_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../controller/api_controller.dart';
 import '../../model/shopmodel/product_model.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  final ProductController productController = Get.put(ProductController());
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  HomeScreen({super.key});
 
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -192,18 +192,29 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width / 1.2,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) =>
-                      buildItemProduct(productItem[index]),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    width: 20,
-                  ),
-                  itemCount: productItem.length,
-                ),
-              )
+              Obx(
+                () {
+                  if (productController.products.isEmpty) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.width / 1.5,
+                      width: MediaQuery.of(context).size.height / 1.3,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => buildItemProduct(
+                            productController.products[index], context),
+                        separatorBuilder: (context, index) => const SizedBox(
+                          width: 20,
+                        ),
+                        itemCount: productController.products.length,
+                      ),
+                    );
+                  }
+                },
+              ),
             ],
           ),
         ),
@@ -211,58 +222,66 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildItemProduct(ProductModel model) {
+  Widget buildItemProduct(ShopModel model, context) {
     return Row(
       children: [
-        Column(
-          children: [
-            InkWell(
-              child: Container(
-                height: 150,
-                width: 150,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: DecorationImage(
-                    fit: BoxFit.fitWidth,
-                    image: AssetImage(
-                      model.image,
+        Container(
+          color: Colors.white,
+          width: MediaQuery.of(context).size.height / 5.5,
+          child: Column(
+            children: [
+              InkWell(
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      // fit: BoxFit.fitHeight,
+                      image: NetworkImage(
+                        '${model.image}',
+                      ),
                     ),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  borderRadius: BorderRadius.circular(15),
+                ),
+                onTap: () {},
+              ),
+              Text(
+                '${model.title}',
+                maxLines: 2,
+                style: const TextStyle(
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-              onTap: () {},
-            ),
-            Text(
-              model.title,
-            ),
-            Row(
-              children: [
-                Text(
-                  model.price,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.deepOrange,
-                  ),
-                ),
-                const SizedBox(
-                  width: 45,
-                ),
-                CircleAvatar(
-                  maxRadius: 15,
-                  backgroundColor: Colors.grey[300],
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.favorite,
-                      size: 15,
-                      color: Colors.grey,
+              Row(
+                children: [
+                  Text(
+                    '${model.price}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.deepOrange,
                     ),
                   ),
-                )
-              ],
-            ),
-          ],
+                  const SizedBox(
+                    width: 45,
+                  ),
+                  CircleAvatar(
+                    maxRadius: 15,
+                    backgroundColor: Colors.grey[300],
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.favorite,
+                        size: 15,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

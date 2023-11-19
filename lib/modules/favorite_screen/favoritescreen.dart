@@ -1,43 +1,35 @@
-import 'package:ecomer/layout/shop_app/cubit/cubit.dart';
-import 'package:ecomer/layout/shop_app/cubit/states.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ShopCubit, ShopStates>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Row(
-              children: [
-                const Text(
-                  'My Favorites',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-                const Spacer(),
-                Text(
-                  '1 Item',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Muli',
-                    color: Colors.deepOrange.withOpacity(0.7),
-                  ),
-                ),
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            const Text(
+              'My Favorites',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+              ),
             ),
-          ),
-          body: buildFavItem(context),
-        );
-      },
+            const Spacer(),
+            Text(
+              '1 Item',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 15,
+                fontFamily: 'Muli',
+                color: Colors.deepOrange.withOpacity(0.7),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: buildFavItem(context),
     );
   }
 }

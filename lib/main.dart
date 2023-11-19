@@ -1,6 +1,6 @@
+import 'package:ecomer/modules/login_screen/loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'modules/login_screen/loginscreen.dart';
 
 void main() {
   runApp(const MyApp());

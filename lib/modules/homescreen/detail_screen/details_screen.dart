@@ -141,8 +141,8 @@ class DetailsScreen extends StatelessWidget {
                                 ],
                               ),
                               const Text(
-                                'Wireless Controller for PS4 gives you what\nyou want in your gaming from over precison\n'
-                                'control your ganes to sharing ...',
+                                'Wireless Controller for PS4 gives you what\nyou want in your gaming from over precision\n'
+                                'control your games to sharing ...',
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),
