@@ -274,8 +274,6 @@ class HomeScreen extends StatelessWidget {
                       onPressed: () {
                         model.toggleFavorite();
                         Get.find<FavoriteController>().addToFavorites(model);
-                        Get.find<FavoriteController>()
-                            .removeFromFavorites(model);
                       },
                       icon: Icon(
                         model.isFavorite!

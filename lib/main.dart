@@ -1,8 +1,11 @@
+import 'package:ecomer/controller/favorite_controller.dart';
 import 'package:ecomer/modules/login_screen/loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 void main() {
+  Get.put(FavoriteController());
   runApp(const MyApp());
 }
 

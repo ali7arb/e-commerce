@@ -62,7 +62,7 @@ class FavoriteScreen extends StatelessWidget {
 Widget buildFavItem(context, ShopModel model) => Padding(
       padding: const EdgeInsets.all(20.0),
       child: SizedBox(
-        height: MediaQuery.of(context).size.width / 2,
+        height: MediaQuery.of(context).size.width / 2.5,
         child: Row(
           children: [
             Image(
@@ -89,16 +89,28 @@ Widget buildFavItem(context, ShopModel model) => Padding(
                   const Spacer(),
                   Row(
                     children: [
-                      Text(
-                        '${model.price}',
-                        style: const TextStyle(
-                          fontSize: 12,
+                      Container(
+                        height: MediaQuery.of(context).size.width / 18,
+                        width: MediaQuery.of(context).size.height / 18,
+                        decoration: BoxDecoration(
                           color: Colors.red,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Text(
+                          '${model.price} \$',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       const Spacer(),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          model.toggleFavorite();
+                          Get.find<FavoriteController>()
+                              .removeFromFavorites(model);
+                        },
                         icon: const CircleAvatar(
                           radius: 15,
                           child: Icon(
