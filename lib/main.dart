@@ -1,10 +1,17 @@
 import 'package:ecomer/controller/favorite_controller.dart';
-import 'package:ecomer/modules/login_screen/loginscreen.dart';
+import 'package:ecomer/core/binding/binding_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'controller/controller_view.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   Get.put(FavoriteController());
   runApp(const MyApp());
 }
@@ -15,7 +22,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
@@ -41,7 +48,8 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
         ),
       ),
-      home: const LoginScreen(),
+      initialBinding: InitialBinding(),
+      home: const ControllerView(),
     );
   }
 }

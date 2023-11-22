@@ -272,8 +272,8 @@ class HomeScreen extends StatelessWidget {
                     backgroundColor: Colors.grey[300],
                     child: IconButton(
                       onPressed: () {
-                        model.toggleFavorite();
                         Get.find<FavoriteController>().addToFavorites(model);
+                        model.toggleFavorite();
                       },
                       icon: Icon(
                         model.isFavorite!

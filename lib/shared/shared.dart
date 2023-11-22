@@ -19,7 +19,7 @@ Widget myDivider() => Padding(
     );
 
 Widget defaultForm({
-  required TextEditingController controller,
+  TextEditingController? controller,
   required TextInputType type,
   Function(String)? onSubmit,
   Function(String)? onChanged,
@@ -30,10 +30,12 @@ Widget defaultForm({
   IconData? suffix,
   Function()? suffispressed,
   Function()? onTap,
+  void Function(String?)? onSave,
   required String? Function(dynamic value) validate,
   bool isClickable = true,
 }) =>
     TextFormField(
+      onSaved: onSave,
       controller: controller,
       keyboardType: type,
       obscureText: isPassword,

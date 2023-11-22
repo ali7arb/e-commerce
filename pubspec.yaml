@@ -45,6 +45,8 @@ dependencies:
   dio: ^5.3.3
   get: ^4.6.6
   http: ^1.1.0
+  firebase_core: ^2.22.0
+  firebase_auth: ^4.14.0
 
 
 dev_dependencies:

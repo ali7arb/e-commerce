@@ -12,7 +12,7 @@ class ShopController extends GetxController {
     HomeScreen(),
     FavoriteScreen(),
     const ChatScreen(),
-    const ProfileScreen(),
+    ProfileScreen(),
   ];
 
   void changeBottom(int index) {

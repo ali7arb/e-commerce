@@ -16,7 +16,7 @@ class OtpVerification extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            navigateTo(context, const CompleteProfileScreen());
+            navigateTo(context, CompleteProfileScreen());
           },
         ),
       ),
@@ -107,7 +107,7 @@ class OtpVerification extends StatelessWidget {
               ),
               color: Colors.deepOrange,
               onPressed: () {
-                navigateTo(context, const LoginScreen());
+                navigateTo(context, LoginScreen());
               },
               child: const Text(
                 'Continue',

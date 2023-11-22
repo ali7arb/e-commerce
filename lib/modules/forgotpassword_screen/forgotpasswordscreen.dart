@@ -17,7 +17,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            navigateTo(context, const LoginScreen());
+            navigateTo(context, LoginScreen());
           },
         ),
       ),
@@ -93,7 +93,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       )),
                   TextButton(
                     onPressed: () {
-                      navigateTo(context, const RegisterScreen());
+                      navigateTo(context, RegisterScreen());
                     },
                     child: const Text(
                       'Sign Up',

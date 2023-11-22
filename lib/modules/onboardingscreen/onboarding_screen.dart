@@ -94,7 +94,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               onPressed: () {
                 navigateTo(
                   context,
-                  const LoginScreen(),
+                  LoginScreen(),
                 );
               },
               child: const Text(
